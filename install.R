@@ -22,16 +22,16 @@ pkgs <- c(
     "rmarkdown",
     "httr",
     "knitr",
-    "BiocStyle"
-    "ChIPpeakAnno"
-    "org.Hs.eg.db"
-    "org.Mm.eg.db"
-    "BSgenome.Hsapiens.UCSC.hg19"
-    "TxDb.Mmusculus.UCSC.mm10.knownGene"
-    "TxDb.Hsapiens.UCSC.hg38.knownGene"
-    "BSgenome.Hsapiens.UCSC.hg38"
-    "BSgenome.Mmusculus.UCSC.mm10"
-    "EnsDb.Hsapiens.v86"
+    "BiocStyle",
+    "ChIPpeakAnno",
+    "org.Hs.eg.db",
+    "org.Mm.eg.db",
+    "BSgenome.Hsapiens.UCSC.hg19",
+    "TxDb.Mmusculus.UCSC.mm10.knownGene",
+    "TxDb.Hsapiens.UCSC.hg38.knownGene",
+    "BSgenome.Hsapiens.UCSC.hg38",
+    "BSgenome.Mmusculus.UCSC.mm10",
+    "EnsDb.Hsapiens.v86",
     "TxDb.Mmusculus.UCSC.mm10.ensGene"
     )
 
