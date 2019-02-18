@@ -1,4 +1,4 @@
 #!/bin/bash
 for file in ${1}/*.bed; do
-  R --slave -args ${file} < RunChIPpeakAnno_hg19.R
+  R --slave -args ${file} < ChIPpeakAnno_hg19.R
 done
