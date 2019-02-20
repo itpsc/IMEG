@@ -1,19 +1,24 @@
+install.packages('BiocManager', repos = "http://cran.ism.ac.jp/", dependencies = TRUE)
+if (!requireNamespace("BiocManager"))
+    install.packages("BiocManager")
+BiocManager::install()
+
 pkgs <- c(
-    "OrganismDbi",
-    "ExperimentHub",
+    "edgeR",
+    "Biostrings",
+    "GenomicRanges",
+    "rtracklayer",
+    
     "Biobase",
-    "BiocParallel",
     "biomaRt",
     "Biostrings",
     "BSgenome",
-    "ShortRead",
     "IRanges",
     "GenomicRanges",
     "GenomicAlignments",
     "GenomicFeatures",
     "SummarizedExperiment",
     "VariantAnnotation",
-    "DelayedArray",
     "GSEABase",
     "Gviz",
     "graph",
@@ -35,12 +40,20 @@ pkgs <- c(
     "TxDb.Mmusculus.UCSC.mm10.ensGene"
     )
 
+## 1. CRANから一覧を取得
+cran_list.db <- available.packages(contriburl=contrib.url("http://cran.md.tsukuba.ac.jp/"))
+cran_db <- rownames(cran_list.db)
+fnd1 <- pkgs %in% cran_db
+pkgs_to_install1 <- pkgs[fnd1]
+install.packages(fnd1[,1],contriburl=contrib.url("http://cran.md.tsukuba.ac.jp/"))
+
+## 2. bioconductorから一覧を取得
 ap.db <- available.packages(contrib.url(BiocManager::repositories()))
 ap <- rownames(ap.db)
-fnd <- pkgs %in% ap
-pkgs_to_install <- pkgs[fnd]
+fnd2 <- pkgs %in% ap
+pkgs_to_install2 <- pkgs[fnd2]
 
-ok <- BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE) %in% rownames(installed.packages())
+ok <- BiocManager::install(pkgs_to_install2, update=FALSE, ask=FALSE) %in% rownames(installed.packages())
 
 if (!all(fnd))
     message("Packages not found in a valid repository (skipped):\n  ",
@@ -50,3 +63,6 @@ if (!all(ok))
          paste(pkgs_to_install[!ok], collapse="  \n  "))
 
 suppressWarnings(BiocManager::install(update=TRUE, ask=FALSE))
+
+install.packages('Seurat')
+devtools::install_github('alyssafrazee/RSkittleBrewer')
